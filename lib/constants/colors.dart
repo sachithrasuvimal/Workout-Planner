@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kSubTitleColor = Colors.grey;
+const kMainColor = Colors.lightBlue;
 const kMainWhite = Colors.white;
 const kMainBlack = Colors.black;
 const lMainColor = Colors.lightBlue;
