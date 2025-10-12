@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:workout_planner/constants/colors.dart';
 import 'package:workout_planner/constants/responsive.dart';
 import 'package:workout_planner/data/user_data.dart' as UserData;
+import 'package:workout_planner/widgets/exercise_card.dart';
 import 'package:workout_planner/widgets/progress_card.dart';
 
 
@@ -68,6 +69,42 @@ class _HomePageState extends State<HomePage> {
                     color: kMainBlack,
                   ),
                 ),
+                const SizedBox(height: 10),
+                
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ExerciseCard(
+                        title: "Wormup", 
+                        imageUrl: "assets/exercises/pilates_1850484.png",
+                        description: "more"
+                        ),
+                  
+                        ExerciseCard(
+                        title: "Wormup", 
+                        imageUrl: "assets/equipments/stationery-bicycle_3485915.png",
+                        description: "more"
+                        )
+                    ],
+                  ),
+                const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ExerciseCard(
+                        title: "Wormup", 
+                        imageUrl: "assets/exercises/pilates_1850484.png",
+                        description: "more"
+                        ),
+                  
+                        ExerciseCard(
+                        title: "Wormup", 
+                        imageUrl: "assets/equipments/stationery-bicycle_3485915.png",
+                        description: "more"
+                        )
+                    ],
+                  ),
+                
               ],
             ),
           ),
@@ -75,4 +112,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+class Const {
 }
