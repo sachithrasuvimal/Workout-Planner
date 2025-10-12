@@ -22,7 +22,6 @@ class _ProgressCardState extends State<ProgressCard> {
     int done = (widget.progressValue * widget.total).toInt(); // 0.3 * 100 = 30
     return Container(
       width: double.infinity,
-      height: 300,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         gradient: LinearGradient(
@@ -58,12 +57,45 @@ class _ProgressCardState extends State<ProgressCard> {
               valueColor: AlwaysStoppedAnimation(kMainWhite),
               minHeight: 15,
               borderRadius: BorderRadius.circular(10),
-
-
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _builTag("Done", done.toString()),
+                _builTag("Total", done.toString()),
+              ], 
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget _builTag(String title , String value){ 
+    return Column(
+      
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: kMainWhite,
+              ),
+            ),
+            SizedBox(height: 4),
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 14,
+                color: kMainWhite,
+              ),
+            ),
+          ],
+        
     );
   }
 }
