@@ -55,7 +55,19 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 const SizedBox(height: 10),
-                ProgressCard(progressValue: 0.5, total:100,)
+                ProgressCard(progressValue: 0.5, total:100,),
+
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Today's workouts",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    color: kMainBlack,
+                  ),
+                ),
               ],
             ),
           ),
