@@ -5,21 +5,24 @@ class AddExerciseCard extends StatefulWidget {
   final String exerciseTitle;
   final String exerciseImagUrl;
   final int noOFMinutes;
+  final bool isAdded;
+  final bool isFavourite;
+  final void Function() toggleAddExercise;
+  final void Function() toggleaddFavourite;
 
   const AddExerciseCard({
-    super.key, 
+    super.key,
     required this.exerciseTitle,
-    required this.noOFMinutes, 
-    required this.exerciseImagUrl
-    });
+    required this.noOFMinutes,
+    required this.exerciseImagUrl,
+    required this.toggleAddExercise, required this.isAdded, required this.toggleaddFavourite, required this.isFavourite,
+  });
 
   @override
   State<AddExerciseCard> createState() => _AddExerciseCardState();
 }
 
 class _AddExerciseCardState extends State<AddExerciseCard> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,77 +42,75 @@ class _AddExerciseCardState extends State<AddExerciseCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(
-            height: 10,
+        children: [
+          const SizedBox(height: 10),
+          Text(
+            widget.exerciseTitle,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-            Text(
-              widget.exerciseTitle,
-              style: TextStyle(
-                fontSize: 18,
-              fontWeight: FontWeight.bold,
-              ),
-            ),
 
-            SizedBox(height: 10),
+          SizedBox(height: 10),
 
-            Image.asset(
-              widget.exerciseImagUrl,
-              width: 100,
-              fit: BoxFit.cover,
-            ),
+          Image.asset(widget.exerciseImagUrl, width: 100, fit: BoxFit.cover),
 
-            SizedBox(height: 10),
+          SizedBox(height: 10),
 
-            Text(
-              "${widget.noOFMinutes} minuites7",
-              style: TextStyle(fontSize: 16, color: kSubTitleColor),
-            ),
-            SizedBox(height: 10),
+          Text(
+            "${widget.noOFMinutes} minuites7",
+            style: TextStyle(fontSize: 16, color: kSubTitleColor),
+          ),
+          SizedBox(height: 10),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                   width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: kCardButtonColor,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                    child: Center(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.add, color: kMainDarkBlue, size: 20),
-                      ),
-                    ),
-                  ),
-
-                  Container(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
                   width: 60,
                   height: 60,
                   decoration: BoxDecoration(
                     color: kCardButtonColor,
                     borderRadius: BorderRadius.circular(15),
                   ),
-                    child: Center(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.favorite_border,
-                          color: kMainpurpleColoer,
-                          size: 20,
-                        ),
+                  child: Center(
+                    child: IconButton(
+                      onPressed: () {
+                        widget.toggleAddExercise();
+                      },
+                      icon: Icon(
+                        widget.isAdded ? Icons.remove : Icons.add,
+                        color: kMainDarkBlue, 
+                        size: 20),
+                    ),
+                  ),
+                ),
+
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: kCardButtonColor,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Center(
+                    child: IconButton(
+                      onPressed: () {
+                        widget.toggleaddFavourite();
+                      },
+                      icon: Icon(
+                        widget.isFavourite ? Icons. favorite : Icons.favorite_border,
+                        color: kMainpurpleColoer,
+                        size: 20,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 }
