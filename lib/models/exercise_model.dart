@@ -12,4 +12,8 @@ class Exercise {
     required this.noOfMinutes,
     required this.isCompleted,
   });
+
+  
+
+
 }
